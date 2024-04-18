@@ -12,11 +12,17 @@ import requests
 import numpy
 
 
+# init values
 api_key = ""
-api_fullquote = "https://financialmodelingprep.com/api/v3/quote/AAPL?apikey="
+stockTicker = "APPL"
+
+# api links
+api_fullquote = "https://financialmodelingprep.com/api/v3/quote/" + stockTicker + "?apikey="
 api_otcquote = "https://financialmodelingprep.com/api/v3/otc/real-time-price/BATRB?apikey="
+api_exsymbols = "https://financialmodelingprep.com/api/v3/symbol/"stockTicker + "?apikey="
 
 
+#functions
 def printLogo():
 	print("""┳┳┓    ┓      ┏┓    ┓   • 
 ┃┃┃┏┓┏┓┃┏┏┓╋  ┣┫┏┓┏┓┃┓┏┏┓┏
