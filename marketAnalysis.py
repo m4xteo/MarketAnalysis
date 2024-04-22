@@ -1,3 +1,9 @@
+import matplotlib.pyplot as plt
+import mplfinance as mpf
+import datetime as dt
+
+
+
 '''
 ┳┳┓    ┓      ┏┓    ┓   • 
 ┃┃┃┏┓┏┓┃┏┏┓╋  ┣┫┏┓┏┓┃┓┏┏┓┏
@@ -13,13 +19,14 @@ import numpy
 
 
 # init values
-api_key = ""
-stockTicker = "APPL"
+api_key = "TQ7srJMzwQvs5TU1eQiBWndnFCk8GwYF"
+stockTicker ="NASDAQ"
 
 # api links
 api_fullquote = "https://financialmodelingprep.com/api/v3/quote/" + stockTicker + "?apikey="
 api_otcquote = "https://financialmodelingprep.com/api/v3/otc/real-time-price/BATRB?apikey="
-api_exsymbols = "https://financialmodelingprep.com/api/v3/symbol/"stockTicker + "?apikey="
+api_exsymbols = "https://financialmodelingprep.com/api/v3/symbol/"+ stockTicker + "?apikey="
+api_profile =  "https://financialmodelingprep.com/api/v3/profile/"+ stockTicker + "?apikey="
 
 
 #functions
@@ -34,7 +41,9 @@ def printLogo():
 
 def main():
 	printLogo()
-	print(grabData(api_fullquote, api_key))
+	#print(grabData(api_exsymbols, api_key))
+	plt.plot(grabData(api_exsymbols, api_key))
+	plt.show()
 
 def grabData(apiLink, apiKey):
 	parsedLink = apiLink + apiKey
