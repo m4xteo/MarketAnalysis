@@ -19,7 +19,7 @@ import numpy
 
 
 # init values
-api_key = "TQ7srJMzwQvs5TU1eQiBWndnFCk8GwYF"
+api_key = ""
 stockTicker ="NASDAQ"
 
 # api links
