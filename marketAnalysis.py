@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
-import mplfinance as mpf
-import datetime as dt
+#import mplfinance as mpf
+#import datetime as dt
+import json
+import urllib
 
 
 
@@ -19,8 +21,8 @@ import numpy
 
 
 # init values
-api_key = ""
-stockTicker ="NASDAQ"
+api_key = "TQ7srJMzwQvs5TU1eQiBWndnFCk8GwYF"
+stockTicker ="AAPL"
 
 # api links
 api_fullquote = "https://financialmodelingprep.com/api/v3/quote/" + stockTicker + "?apikey="
@@ -42,15 +44,26 @@ def printLogo():
 def main():
 	printLogo()
 	#print(grabData(api_exsymbols, api_key))
-	plt.plot(grabData(api_exsymbols, api_key))
-	plt.show()
+	#plt.plot(grabData(api_exsymbols, api_key))
+	#plt.show()
 
-def grabData(apiLink, apiKey):
-	main() 
+	rawData = grabData(api_fullquote, api_key)
+	#jsonObject = json.loads(rawData)
+	#closingPrice = (jsonObject["price"])
+
+	print(rawData[0]["price"])
+
+
+# Function to grab the data (raw)
+def grabData(apiLink, apiKey): 
 	parsedLink = apiLink + apiKey
-	webResponse = requests.get(url=parsedLink)
-	rawData = webResponse.json()
+	rawData = ""
 
-	return rawData
+	webResponse = requests.get(parsedLink).json()
+	#rawData = json.loads(webResponse.content)
+	#print(str(rawData))
+
+	return webResponse
 
 if __name__ == "__main__":
+	main()
