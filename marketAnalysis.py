@@ -18,6 +18,8 @@ Pulls data from Financial Modeling Prep and others (future) and analyses stock m
 
 import requests
 import numpy
+import pandas
+
 
 
 # init values
@@ -51,6 +53,8 @@ def main():
 	#jsonObject = json.loads(rawData)
 	#closingPrice = (jsonObject["price"])
 
+	price = rawData[0]["price"]
+	dayLow = rawData[0]["dayLow"]
 	print(rawData[0]["price"])
 
 
@@ -64,6 +68,21 @@ def grabData(apiLink, apiKey):
 	#print(str(rawData))
 
 	return webResponse
+
+
+# Analyses Ticker with numerous methods
+def analyseTicker(stock, avg, method):
+	if method == "all":
+		_RSI(stock, avg)
+		_MCD(stock, avg)
+
+def _RSI(stock, avg):
+	return x
+
+def _MCD_(stock, avg):
+	return x 
+
+
 
 if __name__ == "__main__":
 	main()
